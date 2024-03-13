@@ -124,7 +124,7 @@ function love.draw()
 		local difference = star.position - camera.position
 		local distance = #difference
 		local direction = vec3.normalise(difference)
-		local angularRadius = math.acos(math.sqrt(distance ^ 2 - star.radius ^ 2) / distance)
+		local angularRadius = math.asin(star.radius / distance)
 		starShader:send("starDirection", {vec3.components(direction)})
 		starShader:send("starAngularRadius", angularRadius)
 		love.graphics.setColor(star.colour)
